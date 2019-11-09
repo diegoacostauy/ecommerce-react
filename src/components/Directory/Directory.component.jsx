@@ -50,14 +50,11 @@ class Directory extends Component {
       <div className="directory-menu">
 
         {
-          sections.map(item => (
+          sections.map(({id, ...props}) => (
             <Menuitem
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              imageUrl={item.imageUrl}
-              linkUrl={item.linkUrl}
-              size={item.size}
+              key={id}
+              id={id}
+              {...props}
             />
           ))
         }
