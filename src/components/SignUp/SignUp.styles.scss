@@ -1,0 +1,9 @@
+.sign-up {
+  display: flex;
+  flex-flow: column wrap;
+  width: 380px;
+
+  & .title {
+    margin: 20px 0;
+  }
+}
