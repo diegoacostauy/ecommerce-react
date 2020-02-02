@@ -1,20 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Button from '../Button/Button.component';
-import CartItem from  '../CartItem/CartItem.component';
+import { withRouter } from 'react-router-dom';
+
 import { createStructuredSelector } from 'reselect';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
+import { toggleCartDropdown } from '../../redux/cart/cart.actions';
+
+import Button from '../Button/Button.component';
+import CartItem from  '../CartItem/CartItem.component';
 import './CartDropdown.styles.scss';
 
 
-const CartDropdown = ({ cartItems }) => (
+const CartDropdown = ({ cartItems, history, dispatch }) => (
   <div className="cart-dropdown">
     <div className="cart-items">
       {
-        cartItems.map(item => <CartItem item={item} key={item.id} /> )
+        cartItems.length ?
+          cartItems.map(item => <CartItem item={item} key={item.id} />) :
+          <span className="empty-message">Your cart is empty</span>
       }
     </div>
-    <Button>
+    <Button onClick={() => {
+      history.push('/checkout')
+      dispatch(toggleCartDropdown());
+    }}>
       Go to checkout
     </Button>
   </div>
@@ -24,4 +33,10 @@ const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems
 });
 
-export default connect(mapStateToProps)(CartDropdown);
+// HOC connect provides a dispatch method in props
+// we can use dispatch directly in our props instead of writing mapDispatch...
+// const mapDispatchToProps = dispatch => ({
+//   toggleCartDropdown: () => dispatch(toggleCartDropdown())
+// })
+
+export default withRouter(connect(mapStateToProps)(CartDropdown));
