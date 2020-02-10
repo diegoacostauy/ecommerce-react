@@ -28,7 +28,7 @@ const CheckoutItem = ({ cartItem, cartItem: { name, imageUrl, price, quantity}, 
   );
 };
 
-const mapStateToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     addItem: cartItem => dispatch(addItem(cartItem)),
     removeItem: cartItem => dispatch(removeItem(cartItem)),
@@ -36,4 +36,4 @@ const mapStateToProps = dispatch => {
   }
 };
 
-export default connect(null, mapStateToProps)(CheckoutItem)
+export default connect(null, mapDispatchToProps)(CheckoutItem)
