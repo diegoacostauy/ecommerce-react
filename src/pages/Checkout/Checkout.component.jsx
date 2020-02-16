@@ -2,31 +2,37 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors';
-import './Checkout.styles.scss';
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem.component';
 import StripeButton from '../../components/StripeButton/StripeButton.component';
 
+import {
+  CheckoutPage,
+  CheckoutHeader,
+  HeaderBlock,
+  Total,
+  Warning
+} from './Checkout.styles';
+
 const Checkout = ({cartItems, cartTotal}) => {
-  console.log(cartItems);
   return (
-    <div className="checkout-page">
-      <div className="checkout-header">
-        <div className="header-block">
+    <CheckoutPage>
+      <CheckoutHeader>
+        <HeaderBlock>
           <span>Product</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Description</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Quantity</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Price</span>
-        </div>
-        <div className="header-block">
+        </HeaderBlock>
+        <HeaderBlock>
           <span>Remove</span>
-        </div>
-      </div>
+        </HeaderBlock>
+      </CheckoutHeader>
 
       {
         cartItems.map(item => (
@@ -34,21 +40,21 @@ const Checkout = ({cartItems, cartTotal}) => {
         ))
       }
 
-      <div className="total">
+      <Total>
         <span>
           TOTAL: $ {cartTotal}
         </span>
-      </div>
+      </Total>
 
-      <div className="test-warning">
+      <Warning>
         * Please use the following test credit card for payments*
         <br />
         4242 4242 4242 4242 - Exp: Date > Now - CVV: Any 3 digits
-      </div>
+      </Warning>
 
       <StripeButton price={cartTotal} />
 
-    </div>
+    </CheckoutPage>
   );
 };
 
