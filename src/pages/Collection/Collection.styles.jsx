@@ -12,10 +12,6 @@ export const Title = styled.h2`
 
 export const CollectionItems = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;
-
-  & > .collection-item {
-    margin-bottom: 30px;
-  }
+  grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+  grid-gap: 30px;
 `;

@@ -19,8 +19,8 @@ import CartDropdown from '../CartDropdown/CartDropdown.component';
 const Header = ({ currentUser, hidden }) => {
   return (
     <HeaderContainer>
-      <LogoContainer to="/" >
-        <Logo className="logo" />
+      <LogoContainer to="/" aria-label="Awesome Shop">
+        <Logo className="logo"  />
       </LogoContainer>
       <OptionContainer>
         <OptionLink to="/shop">Shop</OptionLink>
