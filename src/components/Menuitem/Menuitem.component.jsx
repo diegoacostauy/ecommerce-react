@@ -7,7 +7,7 @@ const Menuitem = ({id, title, imageUrl, size, linkUrl, history, match }) => {
     <div
       className={size ? `menu-item menu-item-${size}` : 'menu-item' }
       onClick={()=>history.push(`${match.url}${linkUrl}`)}
-      onKeyDown={(ev)=> ev.keyCode == '13' ? history.push(`${match.url}${linkUrl}`) : null}
+      onKeyDown={(ev)=> ev.keyCode === '13' ? history.push(`${match.url}${linkUrl}`) : null}
       tabIndex="0"
       role="link"
 

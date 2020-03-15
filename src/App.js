@@ -15,14 +15,14 @@ import Header from './components/Header/Header.component';
 import Footer from './components/Footer/Footer.component';
 
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { auth, createUserProfileDocument, addCollectionAndDocuments } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 class App extends Component {
 
   unsuscribeFromAuth = null;
 
   componentDidMount() {
-    const { currentUser, collectionsArray, setCurrentUser } = this.props;
+    const { setCurrentUser } = this.props;
 
     this.unsuscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
