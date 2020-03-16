@@ -20,3 +20,13 @@ export const selectCollection = collectionUrl => (
     collections => collections ? collections[collectionUrl] : null
   )
 )
+
+export const selectIsCollectionFetching = createSelector(
+  [selectShop],
+  shop => shop.isFetching
+)
+
+export const selectIsCollectionLoaded = createSelector(
+  [selectShop],
+  shop => Boolean(shop.collections)
+)

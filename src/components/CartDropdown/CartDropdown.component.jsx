@@ -8,11 +8,11 @@ import { toggleCartDropdown } from '../../redux/cart/cart.actions';
 
 import Button from '../Button/Button.component';
 import CartItem from  '../CartItem/CartItem.component';
-import './CartDropdown.styles.scss';
+import { CartDropdownContainer } from './CartDropdown.styles.jsx';
 
 
 const CartDropdown = ({ cartItems, history, dispatch }) => (
-  <div className="cart-dropdown">
+  <CartDropdownContainer>
     <div className="cart-items">
       {
         cartItems.length ?
@@ -26,7 +26,7 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
     }}>
       Go to checkout
     </Button>
-  </div>
+  </CartDropdownContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
